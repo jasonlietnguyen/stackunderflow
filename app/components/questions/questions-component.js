@@ -131,13 +131,17 @@
         qsc.$onInit = function(){
             qsc.member = $rootScope.member;
             qsc.list = DataService.getQuestions()
-            console.log(qsc.list);
-            qsc.addQuestions = function(questions) {
-                qsc.list.$add(questions)
+            
+            qsc.addQuestions = function(question, tags) {
+                debugger
+                question.author = qsc.member;
+                question.tags = tags.split(' ');
+                qsc.list.$add(question)
                 qsc.newQuestions = null
             }
-            qsc.removeQuestions = function(questions) {
-                qsc.list.$remove(questions)
+            
+            qsc.removeQuestions = function(question) {
+                qsc.list.$remove(question)
             }
         }
         

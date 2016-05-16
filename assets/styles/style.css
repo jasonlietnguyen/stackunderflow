@@ -82,3 +82,10 @@ body {
     text-decoration: none;
     color: white;
 }
+#question-container {
+    color: white;
+    text-align: center;
+}
+.inline {
+    display: inline;
+}

@@ -9,15 +9,29 @@
 <p>Only the member who posted the the questions/answers/comments can edit their content</p>
 <p>A member may only upvote the questions/answers/comments once.</p>
 <p>A member can change their vote to either up or down but may not vote both ways.</p>-->
-<h2>Title: {{$ctrl.question.title}}</h2>
-<h2>Question: {{$ctrl.question.body}}</h2>
-<h2>Author: {{$ctrl.question.author}}</h2>
-<h2>Posted On: {{$ctrl.question.posted | date:'shortDate'}}</h2>
-<h2 ng-show="$ctrl.question.answered">Answer On: {{$ctrl.question.answerOn | date:'shortDate'}}</h2>
-<h2>Tags: </h2>
-<ul>
-    <li ng-repeat="tag in $ctrl.question.tags">{{tag}}</li>
-</ul>
-<h2>Votes: Up({{$ctrl.upVotes}}) Down({{$ctrl.downVotes}})</h2>
-<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add</button>
-<button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Clear</button>
+<div class="row main-container" id="question-container">
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <h4>Title: {{$ctrl.question.title}}</h4></div>
+                    <div class="col-xs-4">
+                        <h4>Author: {{$ctrl.question.author.username}}</h4></div>
+                    <div class="col-xs-4">
+                        <h4>Posted On: {{$ctrl.question.posted | date:'shortDate'}}</h4></div>
+                </div>
+                <h2>Question: {{$ctrl.question.body}}</h2>
+                <h2 ng-show="$ctrl.question.answered">Answer On: {{$ctrl.question.answerOn | date:'shortDate'}}</h2>
+                <h2>Tags: </h2>
+                <ul>
+                    <li ng-repeat="tag in $ctrl.question.tags track by $index">{{tag}}</li>
+                </ul>
+                
+                <h2>Votes: Up({{$ctrl.upVotes}}) Down({{$ctrl.downVotes}})</h2>
+                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add</button>
+                <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Clear</button>
+            </div>
+        </div>
+    </div>
+</div>
