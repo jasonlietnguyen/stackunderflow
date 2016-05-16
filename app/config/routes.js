@@ -4,36 +4,36 @@ app.config(function($stateProvider, $urlRouterProvider){
 	
 	$stateProvider
 	.state('home', {
-		url: '/home',
-		templateUrl: 'app/components/home/home.html',
-		controller: 'HomeController',
-		controllerAs: 'hc'
+        url: '/home',
+		template: '<home-component></home-component>',
 	})
 	.state('login', {
 		template: '<login-component></login-component>'
 	})
 	.state('questions', {
 		url: '/questions',
-		templateUrl: 'app/components/questions/questions.html',
-		controller: 'QuestionsController',
-		controllerAs: 'qsc'
+		template: '<questions-component></questions-component>'
+	})
+    .state('answer', {
+		url: '/answer',
+		templateUrl: 'app/components/answer/answer.html',
+		controller: 'AnswerController',
+		controllerAs: '$ctrl'
 	})
 	.state('question', {
 		url: '/questions/:id',
-		templateUrl: 'app/components/questions/question.html',
-		controller: 'QuestionController',
-		controllerAs: 'qc',
-		resolve: {
-			question: function($stateParams, DataService){
-				return DataService.getQuestion($stateParams.id);
-			},
-			comments: function($stateParams, DataService){
-				return DataService.getComments($stateParams.id);
-			},
-			responses: function($stateParams, DataService){
-				return DataService.getResponses($stateParams.id);
-			}
-		}
+		template: '<question-component></question-component>'
+		// resolve: {
+		// 	question: function($stateParams, DataService){
+		// 		return DataService.getQuestion($stateParams.id);
+		// 	},
+		// 	comments: function($stateParams, DataService){
+		// 		return DataService.getComments($stateParams.id);
+		// 	},
+		// 	responses: function($stateParams, DataService){
+		// 		return DataService.getResponses($stateParams.id);
+		// 	}
+		// }
 	})
 	.state('auth', {
 		url: '/user',
@@ -53,4 +53,5 @@ app.run(function($rootScope, $state, AuthService){
 	$rootScope.$on('$stateChangeStart', function(event, toState, toStateParams){
 		AuthService.authMember();
 	});
+    
 })
