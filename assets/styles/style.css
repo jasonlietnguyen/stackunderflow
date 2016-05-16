@@ -1,3 +1,10 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    background-image: url('https://static.pexels.com/photos/7974/pexels-photo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 .text-white{
 	color: aliceblue;
 }
@@ -11,4 +18,67 @@
 	min-height: 250px;
 	color: aliceblue;
 	background-color: #222;
+}
+.main-container {
+    padding: 10px 20px 0 20px;
+    background-color: #555;
+    border-radius: 10px;
+    margin: 30px 200px;
+    opacity: .85;
+    -webkit-filter: drop-shadow(8px 8px 10px #222); 
+    filter: drop-shadow(8px 8px 10px #222);
+}
+.main-container:hover{
+    background-color: #333;
+}
+.title {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 3em;
+}
+.list {
+    text-align: center;
+    background-color: #555;
+    border-radius: 10px;
+    opacity: .9;
+    padding: 10px;
+    color: white;
+    -webkit-filter: drop-shadow(8px 8px 10px #222); 
+    filter: drop-shadow(8px 8px 10px #222);
+}
+.list:hover {
+    background-color: #333;
+}
+.welcome {
+    margin-top: 70px;
+    text-align: center;
+    font-size: 12em;
+    color: white;
+}
+.login {
+    font-size: 3em;
+    text-align: center;
+    color: #5CB85C;
+    border-radius: 10px;
+    border: 2px solid #5CB85C;
+}
+.login:hover {
+    background-color: #5CB85C;
+    color: white;
+}
+.navbar {
+    height: 70px;
+    padding: auto 0;
+    border-radius: 0px;
+    opacity: .9;
+    padding-top: 8px;
+    border: none;
+}
+.navbar li {
+    font-size: 1.5em;
+}
+.question a {
+    text-decoration: none;
+    color: white;
 }

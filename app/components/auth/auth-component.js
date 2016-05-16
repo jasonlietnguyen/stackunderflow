@@ -25,7 +25,7 @@ app.controller('LoginController', function ($scope, $state, AuthService) {
 			$scope.authErr = err.message;
 			$scope.$apply();
 		} else {
-			$state.go('auth.dashboard');
+			$state.go('auth.dashboard');//fix to auth.home
 		}
 	}
 });
