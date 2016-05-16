@@ -10,10 +10,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 		controllerAs: 'hc'
 	})
 	.state('login', {
-		url: '/login',
-		templateUrl: 'app/components/auth/login.html',
-		controller: 'LoginController',
-		controllerAs: 'lc'
+		template: '<login-component></login-component>'
 	})
 	.state('questions', {
 		url: '/questions',

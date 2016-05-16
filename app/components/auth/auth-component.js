@@ -1,34 +1,42 @@
 /* global Firebase */
-app.controller('LoginController', function ($scope, $state, AuthService) {
+(function () {
+	angular.module('stackunderflow').component('loginComponent', {
+		controller: LoginController,
+		templateUrl: 'app/components/auth/login.html'
+	})
 
-	$scope.login = function () {
-		clearErr();
-		AuthService.login($scope.user, handleDBResponse);
-	};
+	function LoginController($state, AuthService) {
+		var lc = this;
+		lc.login = function () {
+			clearErr();
+			AuthService.login(lc.user, handleDBResponse);
+		};
 
-	$scope.register = function () {
-		clearErr();
-		AuthService.register($scope.user, handleDBResponse);
-	};
+		lc.register = function () {
+			clearErr();
+			AuthService.register(lc.user, handleDBResponse);
+		};
 
-	$scope.facebookLogin = function () {
-		clearErr();
-		AuthService.facebookLogin(handleDBResponse);
-	};
+		lc.facebookLogin = function () {
+			clearErr();
+			AuthService.facebookLogin(handleDBResponse);
+		};
 
-	function clearErr(){
-		$scope.authErr = '';
-	}
-
-	function handleDBResponse(err) {
-		if (err) {
-			$scope.authErr = err.message;
-			$scope.$apply();
-		} else {
-			$state.go('auth.dashboard');
+		function clearErr() {
+			lc.authErr = '';
 		}
-	}
-});
+
+		function handleDBResponse(err) {
+			if (err) {
+				lc.authErr = err.message;
+				lc.$apply();
+			} else {
+				$state.go('auth.dashboard');
+			}
+		}
+	};
+
+} ())
 
 app.controller('AuthController', function ($rootScope, $state, AuthService) {
 	//Redirect if Unable to Authenticate
@@ -64,16 +72,16 @@ app.service('AuthService', function ($rootScope, $firebaseObject, CONSTANTS) {
 
 	function setMember(id, cb) {
 		$rootScope.member = $firebaseObject(new Firebase(CONSTANTS.fbRef + 'users/' + id));
-		cb? cb() : '';
+		cb ? cb() : '';
 	}
-	
-	function createUser(authData, user){
+
+	function createUser(authData, user) {
 		var userToAdd = {
-				email: user.email,
-				reputation: 0,
-				created: Date.now()
-			}
-			db.child('users').child(authData.uid).update(userToAdd);
+			email: user.email,
+			reputation: 0,
+			created: Date.now()
+		}
+		db.child('users').child(authData.uid).update(userToAdd);
 	}
 
 	this.authMember = authMember;
@@ -97,9 +105,9 @@ app.service('AuthService', function ($rootScope, $firebaseObject, CONSTANTS) {
 		})
 	}
 
-	this.logout = function(){
+	this.logout = function () {
 		db.unauth();
 		$rootScope.member = null;
 	}
-	
+
 });
