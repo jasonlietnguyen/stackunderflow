@@ -133,8 +133,9 @@
             qsc.list = DataService.getQuestions()
             
             qsc.addQuestions = function(question, tags) {
-                debugger
-                question.author = qsc.member;
+                question.posted = Date.now();
+                question.author = qsc.member.$id;
+                question.username = qsc.member.username || "no username";
                 question.tags = tags.split(' ');
                 qsc.list.$add(question)
                 qsc.newQuestions = null
