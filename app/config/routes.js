@@ -10,6 +10,10 @@ app.config(function($stateProvider, $urlRouterProvider){
 	.state('login', {
 		template: '<login-component></login-component>'
 	})
+	.state('signup', {
+		templateUrl: 'app/components/auth/signUp.html',
+		controller: 'LoginController'
+	})
 	.state('questions', {
 		url: '/questions',
 		template: '<questions-component></questions-component>'
@@ -42,10 +46,10 @@ app.config(function($stateProvider, $urlRouterProvider){
 		controller: 'AuthController'
 	})
 	.state('auth.dashboard', {
-		url: '/dashboard',
-		templateUrl: 'app/components/dashboard/dashboard.html',
-		controller: 'DashboardController',
-		controllerAs: 'dc'
+		url: '/dahboard',
+		template: '<dashboard-component></dashboard-component>',
+		
+		
 	})
 })
 

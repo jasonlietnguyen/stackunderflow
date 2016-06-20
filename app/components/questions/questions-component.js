@@ -117,7 +117,7 @@
 
 
 
-(function() {
+(function () {
 
     angular.module('stackunderflow')
         .component('questionsComponent', {
@@ -127,26 +127,42 @@
 
     function QuestionsController($rootScope, $scope, DataService) {
         var qsc = this;
-        
-        qsc.$onInit = function(){
+        qsc.list = [];
+
+        qsc.$onInit = function () {
+            
             qsc.member = $rootScope.member;
-            qsc.list = DataService.getQuestions()
-            
-            qsc.addQuestions = function(question, tags) {
-                question.posted = Date.now();
-                question.author = qsc.member.$id;
-                question.username = qsc.member.username || "no username";
-                question.tags = tags.split(' ');
-                qsc.list.$add(question)
-                qsc.newQuestions = null
-            }
-            
-            qsc.removeQuestions = function(question) {
-                qsc.list.$remove(question)
-            }
+            qsc.list = DataService.getQuestions();
+            // qsc.list.forEach(function(question){
+            // qsc.list.id = qsc.list.question
+            // })
+            console.log(qsc.list)
         }
-        
+
+
+
+        qsc.addQuestion = function (newQuestion) {
+            var question = {}
+            question.posted = Date.now();
+            question.title = newQuestion.title;
+            question.body = newQuestion.body;
+            question.author = qsc.member.info.firstname;
+            question.usr = qsc.member.info.imgUrl;
+            debugger
+            question.tags = newQuestion.tags.split(' ');
+            question.votes = [];
+            question.answers = [];
+            qsc.list.$add(question).then(qsc.$onInit());
+            qsc.newQuestion = {};
+        }
+
+
+        qsc.removeQuestions = function (question) {
+            qsc.list.$remove(question)
+        }
     }
+
+
 
 } ())
 

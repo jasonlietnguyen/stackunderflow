@@ -77,6 +77,9 @@ app.service('AuthService', function ($rootScope, $firebaseObject, CONSTANTS) {
 
 	function createUser(authData, user) {
 		var userToAdd = {
+		
+			fistName: '',
+			userName: '',
 			email: user.email,
 			reputation: 0,
 			created: Date.now()

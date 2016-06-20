@@ -1,6 +1,8 @@
 body {
     font-family: 'Raleway', sans-serif;
-    background-image: url('https://static.pexels.com/photos/7974/pexels-photo.jpg');
+    /*background-image: url('https://static.pexels.com/photos/7974/pexels-photo.jpg');*/
+    background-color: aquamarine;
+    
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -20,11 +22,12 @@ body {
 	background-color: #222;
 }
 .main-container {
-    padding: 10px 20px 0 20px;
+    /*padding: 10px 20px 0 20px;*/
     background-color: #555;
     border-radius: 10px;
-    margin: 30px 200px;
-    opacity: .85;
+    margin: 20%;
+    color: aqua;
+    opacity: .95;
     -webkit-filter: drop-shadow(8px 8px 10px #222); 
     filter: drop-shadow(8px 8px 10px #222);
 }
@@ -88,4 +91,10 @@ body {
 }
 .inline {
     display: inline;
+}
+.prof {
+ display: block;
+ height: 300px;
+ width: 300px;
+    border-radius: 50% 50%;
 }

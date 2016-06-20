@@ -7,28 +7,59 @@
         })
     function QuestionController($rootScope, DataService, $stateParams){
         var qc = this;
-        qc.$onInit = function(){
-            qc.member = $rootScope.member
-            // tested loading member by id
-            // qc.question = DataService.getQuestion($stateParams.id).$loaded(function(ref){
-            //     DataService.getUserById(ref.memberId).$loaded(function(author){
-            //         console.log(author);
-            //     });
-                
-            // });
-            qc.question = DataService.getQuestion($stateParams.id);
-			qc.comments = DataService.getComments($stateParams.id);
-			qc.responses = DataService.getResponses($stateParams.id);  
-            qc.upVotes = 0;
-            qc.downVotes = 0;
-        }
+        qc.answers = [];
         
-        
-        qc.addInput = function(input, type){
-            input.posted = Date.now();
-            input.author = qc.member.$id;
-            qc[type].$add(input);  
+        qc.$onInit = function(){  
+
+            qc.member = $rootScope.member;   
+            debugger
+            qc.member.votes = $rootScope.member.info || {};
+            qc.votes = DataService.getVotes($stateParams.id);
             
+            qc.question = DataService.getQuestion($stateParams.id);
+            qc.answers = DataService.getAnswers($stateParams.id);
+            qc.comments = DataService.getComments($stateParams.id);
+			
+            debugger
+			// qc.answers = DataService.getAnswers($stateParams.id); 
+        }
+
+
+        qc.upVote = function($rootScope){
+
+debugger
+
+			
+				dc.member.$save(qc.question.id);
+                qc.votes.$add(qc.member.id); 
+                ("question index:" + qc.question);
+                qc.$onInit();
+                }else{
+                    alert('you have already voted')
+                }
+
+            }
+        
+        
+        
+        qc.addAnswer = function(newAnswer){
+            newAnswer.posted = Date.now();
+            newAnswer.author = $rootScope.member.info.username;
+            
+            
+            
+            qc.answers.$add(newAnswer).then(qc.$onInit())
+            qc.newAnswer = [];
+        } 
+        qc.addComment = function(newComment){
+            newComment.posted = Date.now();
+            newComment.author = $rootScope.member.info.username;
+            
+            
+          
+           
+            qc.comments.$add(newComment).then(qc.$onInit())
+            qc.newComment = [];
         } 
 
         

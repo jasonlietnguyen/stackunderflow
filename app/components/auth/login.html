@@ -12,7 +12,7 @@
 				</div>
 				<div class="button-group">
 					<button class="btn btn-primary" type="submit" ng-click="$ctrl.submitForm = $ctrl.login">Login</button>
-					<button class="btn btn-primary" type="submit" ng-click="$ctrl.submitForm = $ctrl.register">Register</button>
+					<a ui-sref="signup">Register</a>
 				</div>
 			</form>
 			<div class="alert alert-danger" ng-show="$ctrl.authErr">{{$ctrl.authErr}}</div>

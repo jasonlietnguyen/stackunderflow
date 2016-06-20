@@ -1,9 +1,84 @@
 <h1>Having a profile that you can't edit it boring</h1>
-<p>member Object: {{member}}</p>
+<p>member Object: {{$ctrl.member.info.firstname}}</p>
 
 <p>This page needs some flair</p>
 <p>Try rendering to the screen all of the fields that will eventually be added to the $rootScope.member object</p>
 <p>For the MemberObject Schema look at the comments on this file</p>
+
+<section class="row">
+	<div class="col-md-12">
+		<h3>My Profile</h3>
+		<div class="well well-lg col-md-4">
+			<!--<h4>{{$ctrl.member.info.firstname}}</h4>-->
+			<img class="prof" ng-src="{{$ctrl.member.info.imgUrl}}">
+			<p>{{$ctrl.member.info.firstname}}</p><p>{{$ctrl.member.info.lastname}}</p>
+		</div>
+		<div class="col-md-8">
+			<button class="pull-right" ng-click="$ctrl.showEdit = !$ctrl.showEdit">Edit</button>
+			<div ng-show="!$ctrl.showEdit" class="well well-lg">
+				<h4>Bio</h4> {{$ctrl.member.info.bio}}
+				<ul class="list-unstyled">
+					<div class="list-group">
+						<li>Country: {{$ctrl.member.info.country}}</li>
+						<li>Website: {{$ctrl.member.info.websiteUrl}}</li>
+						<li>Github: {{$ctrl.member.info.github}}</li>
+						<li>Twitter: {{$ctrl.member.info.twitterHandle}}</li>
+						<li>Favorite Tags: {{$ctrl.member.info.favoriteTags}}</li>
+						<li>Account Created: {{$ctrl.member.info.accountCreated}}</li>
+						<li>Votes: UP({{$ctrl.member.info.upVotes}}) DOWN({{$ctrl.member.info.info.downVotes}})</li>
+						<li>Reputation: {{$ctrl.member.info.reputation}}</li>
+					</div>
+					</ul>
+			</div>
+			<div ng-show="$ctrl.showEdit" class="well well-lg">
+
+				<form class="form" ng-submit="$ctrl.editMember()">
+					<div class="form-group">
+						<label for="firstname">First Name</label>
+						<input type="text" ng-model="$ctrl.newEdit.firstname">
+					</div>
+					<div class="form-group">
+						<label for="lastname">Last Name</label>
+						<input type="text" ng-model="$ctrl.newEdit.lastname">
+					</div>
+					<div class="form-group">
+						<label for="bio">Bio</label>
+						<input type="text" ng-model="$ctrl.newEdit.bio">
+					</div>
+					<div class="form-group">
+						<label for="imgurl">Profile Image URL</label>
+						<input type="text" ng-model="$ctrl.newEdit.imgUrl">
+					</div>
+					<div class="form-group">
+						<label for="country">Country</label>
+						<input type="text" ng-model="$ctrl.newEdit.country">
+					</div>
+					<div class="form-group">
+						<label for="github">Github</label>
+						<input type="text" ng-model="$ctrl.newEdit.github">
+					</div>
+					<div class="form-group">
+						<label for="twitter">Twitter</label>
+						<input type="text" ng-model="$ctrl.newEdit.twitterHandle">
+					</div>
+					<div class="form-group">
+						<label for="favoritetags">Favorite Tags</label>
+						<input type="text" ng-model="$ctrl.newEdit.favoriteTags">
+					</div>
+					<button class="btn btn-default" type="submit">submit</button>
+				</form>
+			</div>
+			
+
+		</div>
+		<button ng-click="$ctrl.getMemberQuestions('ead8ba8b-4925-4da5-8ed5-b24a0672b1d9')">Testing Find Questions</button>
+		<button ui-sref="question({id: '-KHaq1Mi2K04CW3TKHqy'})">Test question id</button>
+		<button ng-click="$ctrl.getMemberById()">Test get member</button>
+		{{$ctrl.memberGotten}}
+		<button ng-click="$ctrl.logMembers()">Log all members</button>
+		<button ng-click="$ctrl.logMemberGotten()">Log member gotten</button>
+	</div>
+</section>
 
 <!--
 	

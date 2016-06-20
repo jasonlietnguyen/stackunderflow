@@ -1,22 +1,16 @@
 <div class="container" ng-show="$ctrl.member.$id">
     <div class="main-container center-block">
-        <div class="panel-heading title">Got a Question? Just Ask!</div>
+        <div class="panel-heading title">Got a Question, human?</div>
         <div class="panel-body">
-            <form type="form form-inline" ng-submit="$ctrl.addQuestions($ctrl.newQuestions, $ctrl.tags)">
+            <form type="form form-inline" ng-submit="$ctrl.addQuestion($ctrl.newQuestion)">
                 <div class="form-group">
-                    <input placeholder="Title" type="text" class="form-control" ng-model="$ctrl.newQuestions.title">
+                    <input placeholder="Title" type="text" class="form-control" ng-model="$ctrl.newQuestion.title">
                 </div>
                 <div class="form-group">
-                    <input placeholder="Tags: Please seperate tags by space" type="text" class="form-control" ng-model="$ctrl.tags">
-                    <!--<div class="form-group">
-                        <select ng-model="$ctrl.newQuestions.tags" class="form-control">
-                            <option value="food">Html</option>
-                            <option value="movie">Css</option>                        
-                        </select>
-                    </div>-->
+                    <input placeholder="Tags: Please seperate tags by space" type="text" class="form-control" ng-model="$ctrl.newQuestion.tags">
                 </div>
                 <div class="form-group">
-                    <textarea placeholder="Questions" class="form-control" rows="5" id="comment" ng-model="$ctrl.newQuestions.body"></textarea>
+                    <textarea placeholder="Questions" class="form-control" rows="5" id="comment" ng-model="$ctrl.newQuestion.body"></textarea>
                 </div>
                 <div class="center-block text-center">
                     <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add</button>
@@ -28,21 +22,27 @@
 </div>
 
 <div class="panel-body question">
-    <div class="list" ng-repeat="questions in $ctrl.list track by $index" style="margin-bottom: 20px; padding:20px 0">
+    <div class="list" ng-repeat="question in $ctrl.list" style="margin-bottom: 20px; padding:20px 0">
         <div class="row">
+             <div class="col-xs-2">
+                <h4>{{question.author}}</h4>
+            </div>
+             <div class="col-xs-2">
+                <img class="prof" ng-src="{{question.usr}}"/>
+            </div>
             <div class="col-xs-2">
-                <h4>{{questions.title}}</h4>
+                <h4>{{question.title}}</h4>
             </div>
             <div class="col-xs-2">
                 <ul>
-                    <li ng-repeat="tag in questions.tags track by $index">{{tag}}</li>
+                    <li ng-repeat="tag in questions.tags track by $index">{{question.tags}}</li>
                 </ul>
             </div>
             <div class="col-xs-6">
-                <h4>{{questions.body}}</h4>
+                <h4>{{question.body}}</h4>
             </div>
             <div class="col-xs-2">
-                <button class="btn btn-success"><a ui-sref="question ({id: questions.$id})"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> View</a></button>
+                <button class="btn btn-success"><a ui-sref="question({id: question.$id})"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> View</a></button>
             </div>
         </div>
     </div>
