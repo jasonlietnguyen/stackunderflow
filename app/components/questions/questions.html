@@ -1,8 +1,9 @@
+<div class="main-container center-block">
 <div class="container" ng-show="$ctrl.member.$id">
-    <div class="main-container center-block">
+    
         <div class="panel-heading title">Got a Question, human?</div>
-        <div class="panel-body">
-            <form type="form form-inline" ng-submit="$ctrl.addQuestion($ctrl.newQuestion)">
+     <div class="pannel-body">
+            <form ng-submit="$ctrl.addQuestion($ctrl.newQuestion)">
                 <div class="form-group">
                     <input placeholder="Title" type="text" class="form-control" ng-model="$ctrl.newQuestion.title">
                 </div>
@@ -16,10 +17,13 @@
                     <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add</button>
                     <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Clear</button>
                 </div>
-            </form>
+                </form>
+                </div>
+            
         </div>
     </div>
-</div>
+
+
 
 <div class="panel-body question">
     <div class="list" ng-repeat="question in $ctrl.list" style="margin-bottom: 20px; padding:20px 0">

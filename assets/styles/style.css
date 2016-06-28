@@ -2,7 +2,6 @@ body {
     font-family: 'Raleway', sans-serif;
     /*background-image: url('https://static.pexels.com/photos/7974/pexels-photo.jpg');*/
     background-color: aquamarine;
-    
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -10,9 +9,13 @@ body {
 .text-white{
 	color: aliceblue;
 }
+.picture {
+    
+}
 
 .content-container{
-	min-height: 800px;
+	height: fit-content;
+    width: fit-content;
 }
 
 .stacked-footer{
@@ -23,19 +26,21 @@ body {
 }
 .main-container {
     /*padding: 10px 20px 0 20px;*/
+    display: flex;
+    max-width: 100%;
+    flex-wrap: wrap;
     background-color: #555;
     border-radius: 10px;
-    margin: 20%;
-    color: aqua;
     opacity: .95;
     -webkit-filter: drop-shadow(8px 8px 10px #222); 
     filter: drop-shadow(8px 8px 10px #222);
+
 }
 .main-container:hover{
-    background-color: #333;
+    background-color: cadetblue;
 }
 .title {
-    font-family: 'Raleway', sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
     text-align: center;
     font-size: 3em;
@@ -86,6 +91,7 @@ body {
     color: white;
 }
 #question-container {
+    width: 100%;
     color: white;
     text-align: center;
 }
@@ -93,8 +99,8 @@ body {
     display: inline;
 }
 .prof {
- display: block;
- height: 300px;
- width: 300px;
+ 
+    height: 1em;
+    width: 1em;
     border-radius: 50% 50%;
 }

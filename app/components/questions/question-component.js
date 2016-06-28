@@ -25,20 +25,20 @@
         }
 
 
-        qc.upVote = function($rootScope){
+//         qc.upVote = function($rootScope){
 
-debugger
+// debugger
 
 			
-				dc.member.$save(qc.question.id);
-                qc.votes.$add(qc.member.id); 
-                ("question index:" + qc.question);
-                qc.$onInit();
-                }else{
-                    alert('you have already voted')
-                }
+// 				dc.member.$save(qc.question.id);
+//                 qc.votes.$add(qc.member.id); 
+//                 ("question index:" + qc.question);
+//                 qc.$onInit();
+//                 }else{
+//                     alert('you have already voted')
+//                 }
 
-            }
+//             }
         
         
         
